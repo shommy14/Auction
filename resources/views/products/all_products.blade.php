@@ -17,6 +17,7 @@
                         <th>Name</th>
                         <th>Initial price</th>
                         <th>Product status</th>
+                        <th>Due date</th>
                         <th></th>
                     </tr>
                     @if(count($products)>0)
@@ -25,6 +26,7 @@
                                 <tr>
                                     <td>{{ $product-> name }}</td>
                                     <td>{{ $product-> starter_price }}</td>
+                                    <td>{{ $product-> due_date }}</td>
                                     <td>
                                         @if( !empty($product))
                                             @if($product -> sold)
@@ -42,7 +44,7 @@
                                                 <i class="glyphicon glyphicon-pencil"></i>
                                             </a>
                                         @else
-                                            {{ 'Product sold' }}
+                                            {{ 'Product sold!' }}
                                         @endif
                                     </td>
                                 </tr>

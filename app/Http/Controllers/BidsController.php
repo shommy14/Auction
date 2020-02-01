@@ -109,4 +109,14 @@ class BidsController extends Controller
         $bids = Bid::all();
         return view('bids.show',compact('bids'));
     }
+
+    /**
+     * Display a listing of the resource.
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function getMaxProductBid($id)
+    {
+        $bid = Bid::where('product_id',$id);
+    }
 }
