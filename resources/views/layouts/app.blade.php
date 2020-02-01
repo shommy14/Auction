@@ -23,7 +23,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="#">
                     {{ config('app.name', 'Auction system') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -34,13 +34,19 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li>
-                            <a class="nav-link" href="{{ route('home') }}">Dashboard</a>
+                            <a class="nav-link" href="{{ route('all-products') }}">All products</a>
                         </li>
                         <li>
                             <a class="nav-link" href="{{ route('products.create') }}">Make Auction</a>
                         </li>
                         <li>
                             <a class="nav-link" href="{{ route('products.index') }}">My Auctions</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="{{ route('bids.index') }}">My bids</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="{{ route('home') }}">Bought/Sold</a>
                         </li>
                     </ul>
 

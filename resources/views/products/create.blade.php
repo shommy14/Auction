@@ -15,3 +15,12 @@
         </div>
     </div>
 @endsection
+
+<style>
+    h2{
+        margin-left: 30px;
+    }
+    .margina{
+        margin-left: 25px;
+    }
+</style>

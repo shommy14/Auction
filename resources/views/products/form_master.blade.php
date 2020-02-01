@@ -90,9 +90,4 @@
 </div>
 
 
-<style>
-    .margina{
-        margin-top: 10%;
-        margin-left: 10px;
-    }
-</style>
+

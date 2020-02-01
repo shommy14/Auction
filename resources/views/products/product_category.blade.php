@@ -1,26 +1,25 @@
 @extends('layouts.app')
+
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
+    <div class="product-section container">
+        <div class="sidebar">
+            <h1>{{ $category-> name }}</h1>
+            <div class="products justify-content-center ">
                 <div class="card">
-                    <div class="card-header">My auctions</div>
+                    <div class="card-header">Products</div>
                     <div class="card-body">
                         <table class="table table-bordered text-sm-center">
                             <tr>
                                 <th>Name</th>
                                 <th>Initial price</th>
                                 <th>Product status</th>
-                                <th>Due date</th>
                                 <th></th>
                             </tr>
                             @if(count($products)>0)
                                 @foreach ($products as $product)
-                                    @if(Auth::user()->id == $product -> userId)
                                         <tr>
                                             <td>{{ $product-> name }}</td>
                                             <td>{{ $product-> starter_price }}</td>
-                                            <td>{{ $product-> due_date }}</td>
                                             <td>
                                                 @if( !empty($product))
                                                     @if($product -> sold)
@@ -33,15 +32,18 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <a class="btn btn-success" href="{{route('product-bids',$product->id)}}">View Bids
-                                                    <i class="glyphicon glyphicon-pencil"></i>
-                                                </a>
+                                                @if($product -> sold == 0)
+                                                    <a class="btn btn-success" href="{{route('products.show',$product->id)}}">View
+                                                        <i class="glyphicon glyphicon-pencil"></i>
+                                                    </a>
+                                                @else
+                                                    {{ 'Product sold' }}
+                                                @endif
                                             </td>
                                         </tr>
-                                    @endif
                                 @endforeach
                             @else
-                                <p>Go for "Make Auction" tab for your first one!</p>
+                                <p>There are no products for {{ $category-> name }} category.</p>
                             @endif
                         </table>
                     </div>

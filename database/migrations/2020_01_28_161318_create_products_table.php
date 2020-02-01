@@ -21,6 +21,7 @@ class CreateProductsTable extends Migration
             $table->string('shipment');
             $table->boolean('sold')->default(0);
             $table->double('starter_price');
+            $table->date('due_date');
             $table->unsignedInteger('catId')->nullable(false);
             $table->unsignedInteger('userId')->nullable(false);
             $table->foreign('catId')->references('id')->on('categories');

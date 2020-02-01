@@ -2,23 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
+use App\Bid;
 use App\Product;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
 
-class ProductsController extends Controller
+class BidsController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -26,8 +15,8 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products = Product::with('category','user')->get();
-        return view('products.index')->with('products', $products);
+        $bids = Bid::all();
+        return view('bids.my_bids',compact('bids'));
     }
 
     /**
@@ -37,8 +26,7 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
-        return view('products.create',compact('categories'));
+        //
     }
 
     /**
@@ -51,26 +39,15 @@ class ProductsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'name'=>'required|string|max:255',
-            'description'=>'required',
-            'starter_price'=>'required|numeric',
-            'payment'=>'required|string|max:255',
-            'shipment'=>'required|string|max:255',
-            'sold'=>'required',
-            'catId'=>'required',
-            'userId'=>'required',
+            'price'=>'required|numeric',
+            'user_id'=>'required',
+            'product_id'=>'required',
         ]);
-        Product::create([
-            'name' => $request->name,
-            'description' => $request->description,
-            'starter_price' => $request->starter_price,
-            'payment'=> $request ->payment,
-            'shipment'=> $request->shipment,
-            'sold' => $request->sold,
-            'due_date' => Carbon::now()->addDays(10),
-            'catId'=> $request->catId,
-            'userId'=>$request->userId,
-            ]);
+        Bid::create([
+            'price'=> $request->price,
+            'user_id'=> $request->user_id,
+            'product_id'=> $request->product_id,
+        ]);
 
         return redirect()->route('home')->with('success','Product created, success!');
     }
@@ -83,8 +60,7 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-        $product = Product::find($id);
-        return view('products.show',compact('product'));
+        //
     }
 
     /**
@@ -118,7 +94,19 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-        Product::find($id)->delete();
-        return redirect()->route('home')->with('success','Product deleted, success');
+        Bid::find($id)->delete();
+        return redirect()->route('app.index')->with('success','Book deleted, success');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function showBid()
+    {
+        $bids = Bid::all();
+        return view('bids.show',compact('bids'));
     }
 }
