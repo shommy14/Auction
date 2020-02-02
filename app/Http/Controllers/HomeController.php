@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Bid;
 use App\Category;
 use App\Product;
+use App\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -33,12 +34,12 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $users = User::all();
         $products = Product::with('category','user')->get();
-        $bids = Bid::where
 
         return view('home')->with([
+            'users' => $users,
             'products' => $products,
-            'bids' => $bids
         ]);
     }
 
@@ -49,12 +50,14 @@ class HomeController extends Controller
      */
     public function AllProducts()
     {
+        $users = User::all();
         $categories = Category::all();
         $products = Product::with('category','user')->get();
 
         return view('products.all_products')->with([
             'products' => $products,
-            'categories' => $categories
+            'categories' => $categories,
+            'users' => $users
         ]);
     }
 

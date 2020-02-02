@@ -16,8 +16,8 @@
                     <tr>
                         <th>Name</th>
                         <th>Initial price</th>
-                        <th>Product status</th>
                         <th>Due date</th>
+                        <th>Product status</th>
                         <th></th>
                     </tr>
                     @if(count($products)>0)
@@ -44,7 +44,12 @@
                                                 <i class="glyphicon glyphicon-pencil"></i>
                                             </a>
                                         @else
-                                            {{ 'Product sold!' }}
+                                            @foreach($users as $user)
+                                                @if($user -> id == $product->buyer_id)
+                                                    {{ 'Product sold to: '.$user -> name }} <br>
+                                                    {{ 'for: '.$product -> price_sold.'$' }}
+                                                @endif
+                                            @endforeach
                                         @endif
                                     </td>
                                 </tr>

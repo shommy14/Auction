@@ -16,7 +16,7 @@
                         <tr>
                             <th>Name</th>
                             <th>Initial price</th>
-                            <th>Product status</th>
+                            <th>Due date</th>
                             <th></th>
                         </tr>
                         @if(count($products)>0)

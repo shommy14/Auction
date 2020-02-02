@@ -8,6 +8,7 @@
                     <div class="card-body">
                         <table class="table table-bordered text-sm-center">
                             <tr>
+                                <th>Product id number</th>
                                 <th>Product name</th>
                                 <th>Your bid</th>
                                 <th></th>
@@ -16,6 +17,7 @@
                                 @foreach ($bids as $bid)
                                     @if(Auth::user()->id == $bid -> user_id)
                                         <tr>
+                                            <td>{{ $bid-> product -> id }}</td>
                                             <td>{{ $bid-> product -> name }}</td>
                                             <td>{{ $bid-> price }}</td>
                                             <td>
