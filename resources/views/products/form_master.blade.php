@@ -84,6 +84,15 @@
             {{ $errors->first('userId', ':message') }}
         </div>
     </div>
+
+    {{--<div class="form-group d-flex flex-column">
+        <lable for="image">Product image</lable>
+        <div class="row">
+            <div class="col-sm-2">
+                <input type="file" name="image" class="py-2">
+            </div>
+    </div>--}}
+
     <div class="form-group">
         {{ Form::button(isset($model)? 'Update' : 'save' , ['class'=>'btn btn-success', 'type'=>'submit']) }}
     </div>

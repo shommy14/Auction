@@ -6,7 +6,7 @@
                 <h2>Product</h2>
                 <div class="row">
                     <div class="col-md-6 col-md-offset-3">
-                        {{ Form::open(['route'=>'products.store', 'method'=>'POST']) }}
+                        {{ Form::open(['route'=>'products.store', 'method'=>'POST', 'enctype'=>"multipart/form-data"]) }}
                         @include('products.form_master')
                         {{ form::close() }}
                     </div>

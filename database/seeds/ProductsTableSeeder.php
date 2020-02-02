@@ -22,6 +22,11 @@ class ProductsTableSeeder extends Seeder
                 'shipment' => '1 day', 'sold' => false, 'starter_price' => 400,
                 'due_date' => Carbon::now()->addDays(10), 'catId' => 5, 'userId' => 3,
                 'created_at' => Carbon::now()
+            ],
+            ['name' => 'Product3', 'description'=> 'random description', 'payment' => 'cash',
+            'shipment' => '1 day', 'sold' => false, 'starter_price' => 300,
+            'due_date' => '2020-1-30', 'catId' => 6, 'userId' => 3,
+            'created_at' => '2020-1-20'
             ]
         ]);
     }

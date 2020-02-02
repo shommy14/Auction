@@ -59,18 +59,21 @@ class ProductsController extends Controller
             'sold'=>'required',
             'catId'=>'required',
             'userId'=>'required',
+            /*'image'=>'file|image|max:5000',*/
         ]);
         Product::create([
             'name' => $request->name,
             'description' => $request->description,
             'starter_price' => $request->starter_price,
-            'payment'=> $request ->payment,
+            'payment'=> $request->payment,
             'shipment'=> $request->shipment,
             'sold' => $request->sold,
             'due_date' => Carbon::now()->addDays(10),
             'catId'=> $request->catId,
             'userId'=>$request->userId,
+            /*'image' => $request->image -> store('uploads','public'),*/
             ]);
+
 
         return redirect()->route('home')->with('success','Product created, success!');
     }
